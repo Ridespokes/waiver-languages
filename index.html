@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Waiver</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<style>
+  :root {
+    --h1-size: 36px;
+    --h2-size: 24px;
+    --p-size: 18px;
+    --btn-font: 18px;
+    --content-max-width: 900px;
+    --content-side-pad: 24px;
+    --submit-width: 280px;
+    --submit-height: 56px;
+    --submit-radius: 10px;
+    --submit-bottom: 200px;
+    --lang-gap: 12px;
+    --lang-bottom: 40px;
+    --lang-btn-pad-v: 10px;
+    --lang-btn-pad-h: 18px;
+    --lang-btn-font: 16px;
+  }
+  html[data-lang="zh"],
+  html[data-lang="ja"] {
+    --h1-size: 34px;
+    --h2-size: 22px;
+    --p-size: 17px;
+    --btn-font: 17px;
+    --lang-btn-font: 15px;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; padding: 0; background: #fff; color: #111;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+                 "Noto Sans", "Noto Sans CJK JP", "Noto Sans CJK SC", "Hiragino Kaku Gothic ProN",
+                 "Source Han Sans", "PingFang SC", "Microsoft Yahei", sans-serif;
+    line-height: 1.6; }
+  .wrap { margin: 0 auto; max-width: var(--content-max-width); padding: 20px var(--content-side-pad) 320px; }
+  h1 { font-size: var(--h1-size); line-height: 1.2; text-align: center; margin: 18px 0 16px; font-weight: 700; }
+  h2 { font-size: var(--h2-size); line-height: 1.35; margin: 18px 0 8px; font-weight: 700; }
+  p { font-size: var(--p-size); margin: 10px 0; }
+  #accept-btn { position: fixed; left: 50%; transform: translateX(-50%); bottom: var(--submit-bottom);
+    width: var(--submit-width); height: var(--submit-height); font-size: var(--btn-font);
+    background-color: #4CAF50; color: #fff; border: none; cursor: pointer; border-radius: var(--submit-radius);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+  #accept-btn:hover { background-color: #45a049; }
+  #lang-switch { position: fixed; left: 50%; transform: translateX(-50%); bottom: var(--lang-bottom);
+    display: flex; gap: var(--lang-gap); flex-wrap: wrap; justify-content: center; }
+  .lang-btn { padding: var(--lang-btn-pad-v) var(--lang-btn-pad-h); border: 1px solid #ddd; border-radius: 10px;
+    background: #f7f7f7; cursor: pointer; font-size: var(--lang-btn-font); }
+  .lang-btn:hover { background: #eee; }
+  /* ENLARGED POPUP ~4x area */
+  #popup { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background-color: #fff; padding: 44px 88px; border: 2px solid #4CAF50; box-shadow: 0 8px 24px rgba(0,0,0,.25);
+    font-size: calc(var(--btn-font) + 10px); z-index: 1000; border-radius: 16px; text-align: center; max-width: 90vw; }
+  #popup-overlay { display: none; position: fixed; inset: 0; background-color: rgba(0,0,0,.35); z-index: 999; }
+  .visually-hidden { position: absolute !important; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px); white-space: nowrap; }
+  #waiver-content { word-break: normal; overflow-wrap: anywhere; }
+  html[data-lang="ja"] #waiver-content, html[data-lang="zh"] #waiver-content { word-break: break-word; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <h1 id="page-title">Waiver Agreement</h1>
+
+  <div id="waiver-content">
+    <h2>1. ACKNOWLEDGEMENT OF INHERENT RISK</h2>
+    <p>I understand and accept that my participation in biking, e-biking, e-scootering, and any other
+    activities associated with equipment rented from Spokes Bicycle Rentals &amp; Espresso Bar Inc.,
+    (“Spokes”), is voluntary and involves inherent risks, including risks of bodily injury, death, and
+    property damage. I freely accept and assume all such risks and I understand and agree that I will
+    be primarily responsible for my own safety while using equipment rented from Spokes (“Spokes
+    Equipment”).</p>
+
+    <h2>2. WAIVER AND RELEASE</h2>
+    <p>I, on my own behalf and on behalf of my estate, heirs, agents, administrators, and assigns, hereby
+    waive, release, and forever discharge Spokes and all of its agents, employees, and affiliated
+    companies, (collectively, the “Releasees”), from any and all actions, claims, causes of action, and
+    liabilities arising from or in any way related directly or indirectly to my use or operation of
+    Spokes Equipment, including but not limited to any negligence, breach of contract, breach of duty
+    of care, or breach of any statutory or other duty by any Releasee.</p>
+
+    <h2>3. INDEMNIFICATION</h2>
+    <p>I hereby to agree to indemnify, defend, and hold the Releasees harmless from any and all actions,
+    claims, causes of action, liabilities, expenses, and costs, including reasonable legal costs, arising
+    from or in any way related, directly or indirectly, to my use or operation of Spokes Equipment
+    and/or the use or operation of Spokes Equipment by a minor in my care.</p>
+
+    <p>I also agree to fully indemnify Spokes for the fair market value of all Spokes Equipment that is
+    lost or destroyed while rented by me or while otherwise in my care or control and I further agree
+    to fully indemnify Spokes for the costs of repairing any damage to Spokes Equipment that
+    occurred while that Spokes Equipment was rented by me or while it was otherwise in my care or
+    control. Where due and owing, I consent to Spokes charging the full amount of this indemnity to
+    my credit card on file with Spokes.</p>
+
+    <h2>4. REPRESENTATIONS</h2>
+    <p>(a) Neither I nor any minor in my care will do anything while using Spokes Equipment that
+    could reasonably pose a hazard to others;<br>
+    (b) I and any minor in my care will strictly adhere to all applicable laws and regulations,
+    including bylaws and statutory enactments, while using or operating Spokes Equipment; and<br>
+    (c) I, and any minor in my care, possess the ability, fitness, and skill reasonably required to
+    use and operate the Spokes Equipment that I have rented or obtained, directly or indirectly, from Spokes.</p>
+
+    <p><strong>BY CLICKING “SUBMIT”, I CONFIRM THAT I HAVE READ AND FULLY
+    UNDERSTOOD ALL OF THE ABOVE TERMS</strong></p>
+  </div>
+</div>
+
+<button id="accept-btn" aria-live="polite">SUBMIT</button>
+<div id="popup-overlay"></div>
+<div id="popup">Waiver complete — Thank you, enjoy the ride!</div>
+
+<div id="lang-switch" aria-label="Language options">
+  <button class="lang-btn" data-lang="fr" aria-label="French">Français</button>
+  <button class="lang-btn" data-lang="de" aria-label="German">Deutsch</button>
+  <button class="lang-btn" data-lang="zh" aria-label="Mandarin Chinese">中文（简体）</button>
+  <button class="lang-btn" data-lang="ja" aria-label="Japanese">日本語</button>
+  <span class="visually-hidden" id="lang-status" aria-live="polite"></span>
+</div>
+
+<script>
+const i18n = {
+  en: {
+    title: 'Waiver Agreement',
+    submit: 'SUBMIT',
+    popup: 'Waiver complete — Thank you, enjoy the ride!',
+    html: document.getElementById('waiver-content').innerHTML
+  },
+  fr: {
+    title: 'Accord de décharge',
+    submit: 'SOUMETTRE',
+    popup: 'Décharge terminée — Merci, bonne balade !',
+    html: `
+      <h2>1. RECONNAISSANCE DU RISQUE INHÉRENT</h2>
+      <p>Je comprends et j’accepte que ma participation au vélo, au vélo électrique, à la trottinette électrique
+      et à toute autre activité liée à l’équipement loué auprès de Spokes Bicycle Rentals &amp; Espresso Bar Inc.
+      (« Spokes ») est volontaire et comporte des risques inhérents, y compris le risque de blessures corporelles,
+      de décès et de dommages matériels. J’accepte librement et j’assume tous ces risques, et je comprends et
+      j’accepte que je serai principalement responsable de ma propre sécurité lors de l’utilisation de l’équipement
+      loué auprès de Spokes (« Équipement Spokes »).</p>
+
+      <h2>2. RENONCIATION ET DÉCHARGE</h2>
+      <p>Je, pour mon propre compte et au nom de ma succession, de mes héritiers, mandataires, administrateurs
+      et ayants droit, renonce, libère et décharge à jamais Spokes et tous ses mandataires, employés et sociétés
+      affiliées (collectivement, les « Bénéficiaires de la décharge ») de toute action, réclamation, cause d’action
+      et responsabilité découlant de ou liée, directement ou indirectement, à mon utilisation ou à l’exploitation de
+      l’Équipement Spokes, y compris, mais sans s’y limiter, toute négligence, rupture de contrat, manquement à
+      une obligation de diligence ou manquement à toute obligation légale ou autre par un Bénéficiaire de la décharge.</p>
+
+      <h2>3. INDEMNISATION</h2>
+      <p>Je conviens d’indemniser, de défendre et de tenir indemnes les Bénéficiaires de la décharge de toute action,
+      réclamation, cause d’action, responsabilité, dépense et coût, y compris les frais juridiques raisonnables, découlant de
+      ou liés, directement ou indirectement, à mon utilisation ou à l’exploitation de l’Équipement Spokes et/ou à l’utilisation
+      ou à l’exploitation de l’Équipement Spokes par un mineur à ma charge.</p>
+
+      <p>Je conviens également d’indemniser intégralement Spokes pour la valeur marchande de tout Équipement Spokes perdu ou
+      détruit pendant la période de location par moi ou lorsqu’il est autrement sous ma garde ou mon contrôle, et je conviens
+      en outre d’indemniser intégralement Spokes pour les coûts de réparation de tout dommage à l’Équipement Spokes survenu pendant
+      que cet Équipement Spokes était loué par moi ou lorsqu’il était autrement sous ma garde ou mon contrôle. Le cas échéant,
+      j’autorise Spokes à débiter le montant total de cette indemnité de ma carte de crédit enregistrée auprès de Spokes.</p>
+
+      <h2>4. DÉCLARATIONS</h2>
+      <p>(a) Ni moi ni aucun mineur à ma charge ne ferons quoi que ce soit lors de l’utilisation de l’Équipement Spokes qui
+      pourrait raisonnablement présenter un danger pour autrui ;<br>
+      (b) Je respecterai strictement, et tout mineur à ma charge respectera strictement, toutes les lois et réglementations
+      applicables, y compris les règlements municipaux et les textes législatifs, lors de l’utilisation ou de l’exploitation de
+      l’Équipement Spokes ; et<br>
+      (c) Je possède, et tout mineur à ma charge possède, les aptitudes, la forme et les compétences raisonnablement nécessaires
+      pour utiliser et faire fonctionner l’Équipement Spokes que j’ai loué ou obtenu, directement ou indirectement, auprès de Spokes.</p>
+
+      <p><strong>EN CLIQUANT SUR « SOUMETTRE », JE CONFIRME AVOIR LU ET COMPRIS
+      L’ENSEMBLE DES CONDITIONS CI-DESSUS</strong></p>
+    `
+  },
+  de: {
+    title: 'Haftungsverzichtserklärung',
+    submit: 'SENDEN',
+    popup: 'Verzicht abgeschlossen – Vielen Dank, gute Fahrt!',
+    html: `
+      <h2>1. ANERKENNUNG DES INHÄRENTEN RISIKOS</h2>
+      <p>Ich verstehe und akzeptiere, dass meine Teilnahme am Fahrradfahren, E-Biken, E-Scooter-Fahren und
+      anderen Aktivitäten im Zusammenhang mit von Spokes Bicycle Rentals &amp; Espresso Bar Inc. („Spokes“)
+      gemietetem Equipment freiwillig ist und inhärente Risiken beinhaltet, einschließlich des Risikos von
+      Körperverletzungen, Tod und Sachschäden. Ich akzeptiere diese Risiken freiwillig und bin damit einverstanden,
+      dass ich in erster Linie selbst für meine Sicherheit verantwortlich bin, während ich das von Spokes gemietete
+      Equipment („Spokes-Equipment“) benutze.</p>
+
+      <h2>2. HAFTUNGSVERZICHT UND ENTLASSUNG</h2>
+      <p>Ich verzichte hiermit, in meinem eigenen Namen sowie im Namen meines Nachlasses, meiner Erben, Bevollmächtigten,
+      Verwalter und Rechtsnachfolger, auf sämtliche Ansprüche und entlaste Spokes sowie alle seine Vertreter,
+      Mitarbeiter und verbundenen Unternehmen (gemeinsam die „Freigestellten“) von allen Handlungen, Forderungen,
+      Klagegründen und Haftungen, die sich aus meiner Nutzung oder dem Betrieb des Spokes-Equipments ergeben oder damit
+      in irgendeiner Weise direkt oder indirekt zusammenhängen, einschließlich, aber nicht beschränkt auf Fahrlässigkeit,
+      Vertragsverletzung, Verletzung von Sorgfaltspflichten oder Verletzung jeglicher gesetzlicher oder sonstiger Pflichten
+      durch einen Freigestellten.</p>
+
+      <h2>3. FREISTELLUNG (INDEMNIFIKATION)</h2>
+      <p>Ich verpflichte mich, die Freigestellten von sämtlichen Handlungen, Forderungen, Klagegründen, Haftungen, Ausgaben
+      und Kosten, einschließlich angemessener Rechtskosten, freizustellen, zu verteidigen und schadlos zu halten, die sich
+      aus meiner Nutzung oder dem Betrieb des Spokes-Equipments und/oder der Nutzung oder dem Betrieb des Spokes-Equipments
+      durch einen mir anvertrauten Minderjährigen direkt oder indirekt ergeben oder damit zusammenhängen.</p>
+
+      <p>Ich verpflichte mich ferner, Spokes den Zeitwert sämtlichen Spokes-Equipments zu ersetzen, das während der Anmietung
+      durch mich oder sonst unter meiner Obhut oder Kontrolle verloren geht oder zerstört wird, und ich verpflichte mich
+      außerdem, Spokes die Kosten für die Reparatur aller Schäden am Spokes-Equipment zu erstatten, die während der Anmietung
+      durch mich oder sonst unter meiner Obhut oder Kontrolle entstanden sind. Falls fällig, ermächtige ich Spokes, den
+      vollen Betrag dieser Freistellung meiner hinterlegten Kreditkarte zu belasten.</p>
+
+      <h2>4. ZUSICHERUNGEN</h2>
+      <p>(a) Weder ich noch ein mir anvertrauter Minderjähriger werden bei der Nutzung des Spokes-Equipments etwas tun, das
+      für andere vernünftigerweise gefährlich sein könnte;<br>
+      (b) Ich und jeder mir anvertraute Minderjährige werden alle geltenden Gesetze und Vorschriften, einschließlich Satzungen
+      und gesetzlicher Bestimmungen, bei der Nutzung oder dem Betrieb des Spokes-Equipments strikt einhalten; und<br>
+      (c) Ich und jeder mir anvertraute Minderjährige verfügen über die Fähigkeiten, Fitness und Fertigkeiten, die vernünftigerweise
+      erforderlich sind, um das von mir gemietete oder direkt oder indirekt von Spokes erhaltene Spokes-Equipment zu benutzen
+      und zu betreiben.</p>
+
+      <p><strong>DURCH KLICKEN AUF „SENDEN“ BESTÄTIGE ICH, DASS ICH ALLE OBIGEN
+      BEDINGUNGEN GELESEN UND VOLLSTÄNDIG VERSTANDEN HABE</strong></p>
+    `
+  },
+  zh: {
+    title: '免责声明协议',
+    submit: '提交',
+    popup: '签署完成 — 谢谢，祝您骑行愉快！',
+    html: `
+      <h2>1. 对固有风险的确认</h2>
+      <p>我理解并接受：我参与骑行、电动自行车、电动滑板车以及与从 Spokes Bicycle Rentals &amp; Espresso Bar Inc.
+      （“Spokes”）租用设备相关的任何其他活动，均属自愿，且包含固有风险，包括人身伤害、死亡及财产损失的风险。
+      我自愿接受并承担上述所有风险，并理解并同意，在使用从 Spokes 租用的设备（“Spokes 设备”）期间，我将对自身的
+      安全承担主要责任。</p>
+
+      <h2>2. 免责与放弃</h2>
+      <p>我本人以及我的遗产、继承人、代理人、管理人和受让人，在此放弃、释放并永久免除 Spokes 及其所有代理人、员工
+      和关联公司（统称“被免责方”）对于任何因我使用或操作 Spokes 设备而产生或以任何方式直接或间接相关的所有行动、
+      主张、诉因和责任的追究，包括但不限于任何被免责方的过失、违约、违反注意义务或违反任何法定或其他义务。</p>
+
+      <h2>3. 赔偿</h2>
+      <p>我同意对被免责方因我使用或操作 Spokes 设备和/或我照看的未成年人使用或操作 Spokes 设备而产生或以任何方式直接或
+      间接相关的任何及所有行动、主张、诉因、责任、费用和成本（包括合理的法律费用）进行赔偿、为其抗辩并使其免受损害。</p>
+
+      <p>我还同意对在我租用期间或在我保管或控制之下丢失或损毁的所有 Spokes 设备向 Spokes 支付其公平市价，并进一步同意就
+      在我租用期间或在我保管或控制之下发生的任何 Spokes 设备损坏的维修费用向 Spokes 全额赔偿。在应付应得的情况下，我
+      同意 Spokes 可从我在其备案的信用卡中扣取上述赔偿的全部金额。</p>
+
+      <h2>4. 陈述</h2>
+      <p>(a) 我或我照看的未成年人在使用 Spokes 设备时均不会做出可能对他人构成危害的行为；<br>
+      (b) 我及我照看的未成年人在使用或操作 Spokes 设备时将严格遵守所有适用的法律法规，包括附例和法定规定；以及<br>
+      (c) 我及我照看的未成年人具备合理要求的能力、体能和技能，以使用和操作我从 Spokes 处直接或间接租用或取得的
+      Spokes 设备。</p>
+
+      <p><strong>点击“提交”即表示我已阅读并完全理解上述所有条款</strong></p>
+    `
+  },
+  ja: {
+    title: '免責同意書',
+    submit: '送信',
+    popup: '免責同意が完了しました — ありがとうございます。良いライドを！',
+    html: `
+      <h2>1. 固有の危険の承認</h2>
+      <p>私は、Spokes Bicycle Rentals &amp; Espresso Bar Inc.（「Spokes」）からレンタルした機材に関連する自転車走行、
+      電動自転車、電動スクーター、その他の活動への参加が任意であり、身体的傷害、死亡、財物損害などの固有の危険を伴う
+      ことを理解し、受け入れます。私はこれらすべての危険を自ら受け入れ、Spokes からレンタルした機材（「Spokes 機材」）
+      を使用する間、自身の安全について第一に責任を負うことに同意します。</p>
+
+      <h2>2. 免責および放棄</h2>
+      <p>私は、自身ならびに私の遺産、相続人、代理人、管理人および譲受人の名において、Spokes とその代理人、従業員および
+      関連会社（総称して「免責対象」）を、Spokes 機材の使用または操作に起因し、またはそれに直接・間接的に関連する一切の
+      行為、請求、訴因および責任から、永続的に免責・解放することに同意します。これには、免責対象の過失、契約違反、注意義務
+      違反、その他法定またはその他の義務違反が含まれますが、これらに限定されません。</p>
+
+      <h2>3. 補償</h2>
+      <p>私は、Spokes 機材の使用または操作、ならびに私の保護下にある未成年者による Spokes 機材の使用または操作に起因し、
+      またはこれに直接・間接的に関連して発生する一切の行為、請求、訴因、責任、費用およびコスト（合理的な法的費用を含む）
+      について、免責対象を防御し、補償し、かつ損害を与えないことに同意します。</p>
+
+      <p>また、私がレンタルしている間、またはその他私の管理下にある間に紛失または破損したすべての Spokes 機材の時価を
+      Spokes に全額補償すること、さらに、私がレンタルしている間、または私の管理下にある間に発生した Spokes 機材の損傷に
+      係る修理費用を全額補償することに同意します。支払義務が生じた場合、Spokes が私の登録済みクレジットカードに当該補償額の
+      全額を請求することに同意します。</p>
+
+      <h2>4. 表明</h2>
+      <p>(a) 私および私の保護下にある未成年者は、Spokes 機材の使用中、他者に危険を生じさせ得る行為を行いません。<br>
+      (b) 私および私の保護下にある未成年者は、Spokes 機材を使用または操作する際、条例や法令を含むすべての適用法規を
+      厳格に遵守します。<br>
+      (c) 私および私の保護下にある未成年者は、Spokes から直接または間接にレンタルまたは取得した Spokes 機材を使用・操作する
+      のに合理的に必要な能力、体力および技能を有しています。</p>
+
+      <p><strong>「送信」をクリックすることで、上記のすべての条件を読み、完全に理解したことを確認します</strong></p>
+    `
+  }
+};
+
+let currentLang = 'en';
+const htmlTag = document.documentElement;
+const titleEl = document.getElementById('page-title');
+const contentEl = document.getElementById('waiver-content');
+const submitBtn = document.getElementById('accept-btn');
+const overlay = document.getElementById('popup-overlay');
+const popup = document.getElementById('popup');
+const langStatus = document.getElementById('lang-status');
+
+function applyLanguage(lang) {
+  currentLang = lang;
+  const t = i18n[lang] || i18n.en;
+  htmlTag.setAttribute('lang', lang === 'zh' ? 'zh-Hans' : lang);
+  htmlTag.setAttribute('data-lang', lang);
+  titleEl.textContent = t.title;
+  contentEl.innerHTML = t.html;
+  submitBtn.textContent = t.submit;
+  popup.textContent = t.popup;
+  langStatus.textContent = '';
+}
+
+document.querySelectorAll('.lang-btn').forEach(b => {
+  b.addEventListener('click', () => {
+    const lang = b.getAttribute('data-lang');
+    applyLanguage(lang);
+    langStatus.textContent = 'Language changed.';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+
+submitBtn.addEventListener('click', () => {
+  overlay.style.display = 'block';
+  popup.style.display = 'block';
+  setTimeout(() => {
+    popup.style.display = 'none';
+    overlay.style.display = 'none';
+    if (currentLang !== 'en') applyLanguage('en');
+  }, 3000); // 3 seconds
+});
+</script>
+
+</body>
+</html>
