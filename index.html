@@ -14,17 +14,17 @@
     --content-max-width: 900px;
     --content-side-pad: 24px;
     --submit-width: 280px;
-    --submit-height: 56px;
+    --submit-height: 48px;
     --submit-radius: 10px;
-    --submit-bottom: 200px;
-    --lang-gap: 12px;
-    --lang-bottom: 40px;
-    --lang-btn-pad-v: 10px;
-    --lang-btn-pad-h: 18px;
+    --lang-gap: 6px;
+    --lang-btn-pad-v: 6px;
+    --lang-btn-pad-h: 10px;
     --lang-btn-font: 16px;
   }
   html[data-lang="zh"],
-  html[data-lang="ja"] {
+  html[data-lang="ja"],
+  html[data-lang="ko"],
+  html[data-lang="es"] {
     --h1-size: 34px;
     --h2-size: 22px;
     --p-size: 17px;
@@ -37,20 +37,50 @@
                  "Noto Sans", "Noto Sans CJK JP", "Noto Sans CJK SC", "Hiragino Kaku Gothic ProN",
                  "Source Han Sans", "PingFang SC", "Microsoft Yahei", sans-serif;
     line-height: 1.6; }
-  .wrap { margin: 0 auto; max-width: var(--content-max-width); padding: 20px var(--content-side-pad) 320px; }
-  h1 { font-size: var(--h1-size); line-height: 1.2; text-align: center; margin: 18px 0 16px; font-weight: 700; }
-  h2 { font-size: var(--h2-size); line-height: 1.35; margin: 18px 0 8px; font-weight: 700; }
-  p { font-size: var(--p-size); margin: 10px 0; }
-  #accept-btn { position: fixed; left: 50%; transform: translateX(-50%); bottom: var(--submit-bottom);
-    width: var(--submit-width); height: var(--submit-height); font-size: var(--btn-font);
+  .wrap { margin: 0 auto; max-width: var(--content-max-width); padding: 10px var(--content-side-pad) 6px; }
+  h1 { font-size: var(--h1-size); line-height: 1.2; text-align: center; margin: 8px 0 10px; font-weight: 700; }
+  h2 { font-size: var(--h2-size); line-height: 1.3; margin: 12px 0 5px; font-weight: 700; }
+  p { font-size: var(--p-size); margin: 7px 0; }
+  #signature-section { margin: 5px auto 18px; max-width: 700px; }
+  #signature-label { display: block; font-size: var(--p-size); font-weight: 700; margin-bottom: 4px; }
+  #signature-pad { display: block; width: 100%; height: clamp(155px, 20vh, 205px); background: #fff;
+    border: 2px solid #777; border-radius: 8px; touch-action: none; cursor: crosshair; }
+  #signature-actions { display: flex; justify-content: space-between; align-items: center; margin-top: 5px; }
+  #clear-signature { padding: 9px 16px; font-size: 16px; border: 1px solid #bbb;
+    border-radius: 8px; background: #f7f7f7; cursor: pointer; }
+  #clear-signature:hover { background: #eee; }
+  #signature-hint { display: block; margin-top: 3px; color: #555; font-size: 13px; }
+  #bottom-controls { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    width: 100%; margin: 0 auto; padding: 8px 12px max(12px, env(safe-area-inset-bottom));
+    background: rgba(255,255,255,.97); }
+  #accept-btn { display: block; position: static; transform: none; margin: 0;
+    width: min(150px, 32%); height: var(--submit-height); font-size: var(--btn-font);
     background-color: #4CAF50; color: #fff; border: none; cursor: pointer; border-radius: var(--submit-radius);
     box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-  #accept-btn:hover { background-color: #45a049; }
-  #lang-switch { position: fixed; left: 50%; transform: translateX(-50%); bottom: var(--lang-bottom);
-    display: flex; gap: var(--lang-gap); flex-wrap: wrap; justify-content: center; }
+  #accept-btn:disabled { background: #aaa; cursor: not-allowed; box-shadow: none; }
+  #accept-btn:not(:disabled):hover { background-color: #45a049; }
+  #lang-switch { position: static; display: flex; gap: var(--lang-gap);
+    flex-wrap: wrap; justify-content: center; width: 100%; }
   .lang-btn { padding: var(--lang-btn-pad-v) var(--lang-btn-pad-h); border: 1px solid #ddd; border-radius: 10px;
     background: #f7f7f7; cursor: pointer; font-size: var(--lang-btn-font); }
   .lang-btn:hover { background: #eee; }
+  @media (max-height: 700px) {
+    .wrap { padding-top: 5px; }
+    h1 { margin: 4px 0 6px; }
+    h2 { margin: 8px 0 4px; }
+    p { margin: 5px 0; }
+    #signature-section { margin-top: 2px; margin-bottom: 12px; }
+    #signature-pad { height: clamp(135px, 18vh, 170px); }
+    #signature-hint { margin-top: 2px; font-size: 12px; }
+    #signature-actions { margin-top: 3px; }
+    #clear-signature { padding: 6px 12px; }
+    .lang-btn { padding: 4px 8px; }
+    #bottom-controls { gap: 6px; padding-top: 6px; }
+    #accept-btn { height: 40px; }
+    #lang-switch { gap: 4px; }
+  }
+
   /* ENLARGED POPUP ~4x area */
   #popup { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
     background-color: #fff; padding: 44px 88px; border: 2px solid #4CAF50; box-shadow: 0 8px 24px rgba(0,0,0,.25);
@@ -104,34 +134,53 @@
     (c) I, and any minor in my care, possess the ability, fitness, and skill reasonably required to
     use and operate the Spokes Equipment that I have rented or obtained, directly or indirectly, from Spokes.</p>
 
-    <p><strong>BY CLICKING “SUBMIT”, I CONFIRM THAT I HAVE READ AND FULLY
+    <p><strong>BY SIGNING BELOW, I CONFIRM THAT I HAVE READ AND FULLY
     UNDERSTOOD ALL OF THE ABOVE TERMS</strong></p>
   </div>
 </div>
 
-<button id="accept-btn" aria-live="polite">SUBMIT</button>
+<section id="signature-section" aria-label="Customer signature">
+  <label id="signature-label" for="signature-pad">Customer signature</label>
+  <canvas id="signature-pad" aria-label="Sign here using your finger, stylus, or mouse"></canvas>
+  <div id="signature-actions">
+    <button id="accept-btn" type="button" disabled>SUBMIT</button>
+    <button id="clear-signature" type="button">Clear signature</button>
+  </div>
+</section>
+<div id="bottom-controls">
+  <div id="lang-switch" aria-label="Language options">
+    <button class="lang-btn" data-lang="en" aria-label="English">English</button>
+    <button class="lang-btn" data-lang="fr" aria-label="French">Français</button>
+    <button class="lang-btn" data-lang="de" aria-label="German">Deutsch</button>
+    <button class="lang-btn" data-lang="es" aria-label="Spanish">Español</button>
+    <button class="lang-btn" data-lang="pt" aria-label="Portuguese">Português</button>
+    <button class="lang-btn" data-lang="fa" aria-label="Farsi">فارسی</button>
+    <button class="lang-btn" data-lang="zh" aria-label="Mandarin Chinese">中文（简体）</button>
+    <button class="lang-btn" data-lang="ja" aria-label="Japanese">日本語</button>
+    <button class="lang-btn" data-lang="ko" aria-label="Korean">한국어</button>
+    <span class="visually-hidden" id="lang-status" aria-live="polite"></span>
+  </div>
+</div>
 <div id="popup-overlay"></div>
 <div id="popup">Waiver complete — Thank you, enjoy the ride!</div>
-
-<div id="lang-switch" aria-label="Language options">
-  <button class="lang-btn" data-lang="fr" aria-label="French">Français</button>
-  <button class="lang-btn" data-lang="de" aria-label="German">Deutsch</button>
-  <button class="lang-btn" data-lang="zh" aria-label="Mandarin Chinese">中文（简体）</button>
-  <button class="lang-btn" data-lang="ja" aria-label="Japanese">日本語</button>
-  <span class="visually-hidden" id="lang-status" aria-live="polite"></span>
-</div>
 
 <script>
 const i18n = {
   en: {
     title: 'Waiver Agreement',
     submit: 'SUBMIT',
+    signature: 'Customer signature',
+    signatureHint: 'Sign above using your finger, stylus, or mouse.',
+    clearSignature: 'Clear signature',
     popup: 'Waiver complete — Thank you, enjoy the ride!',
     html: document.getElementById('waiver-content').innerHTML
   },
   fr: {
     title: 'Accord de décharge',
     submit: 'SOUMETTRE',
+    signature: 'Signature du client',
+    signatureHint: 'Signez ci-dessus avec votre doigt, un stylet ou une souris.',
+    clearSignature: 'Effacer la signature',
     popup: 'Décharge terminée — Merci, bonne balade !',
     html: `
       <h2>1. RECONNAISSANCE DU RISQUE INHÉRENT</h2>
@@ -171,13 +220,16 @@ const i18n = {
       (c) Je possède, et tout mineur à ma charge possède, les aptitudes, la forme et les compétences raisonnablement nécessaires
       pour utiliser et faire fonctionner l’Équipement Spokes que j’ai loué ou obtenu, directement ou indirectement, auprès de Spokes.</p>
 
-      <p><strong>EN CLIQUANT SUR « SOUMETTRE », JE CONFIRME AVOIR LU ET COMPRIS
+      <p><strong>EN SIGNANT CI-DESSOUS, JE CONFIRME AVOIR LU ET COMPRIS
       L’ENSEMBLE DES CONDITIONS CI-DESSUS</strong></p>
     `
   },
   de: {
     title: 'Haftungsverzichtserklärung',
     submit: 'SENDEN',
+    signature: 'Unterschrift des Kunden',
+    signatureHint: 'Bitte oben mit Finger, Stift oder Maus unterschreiben.',
+    clearSignature: 'Unterschrift löschen',
     popup: 'Verzicht abgeschlossen – Vielen Dank, gute Fahrt!',
     html: `
       <h2>1. ANERKENNUNG DES INHÄRENTEN RISIKOS</h2>
@@ -218,13 +270,62 @@ const i18n = {
       erforderlich sind, um das von mir gemietete oder direkt oder indirekt von Spokes erhaltene Spokes-Equipment zu benutzen
       und zu betreiben.</p>
 
-      <p><strong>DURCH KLICKEN AUF „SENDEN“ BESTÄTIGE ICH, DASS ICH ALLE OBIGEN
+      <p><strong>MIT MEINER UNTERSCHRIFT UNTEN BESTÄTIGE ICH, DASS ICH ALLE OBIGEN
       BEDINGUNGEN GELESEN UND VOLLSTÄNDIG VERSTANDEN HABE</strong></p>
+    `
+  },
+  pt: {
+    title: 'Termo de Isenção de Responsabilidade',
+    submit: 'ENVIAR',
+    signature: 'Assinatura do cliente',
+    signatureHint: 'Assine acima usando o dedo, uma caneta digital ou o mouse.',
+    clearSignature: 'Apagar assinatura',
+    popup: 'Termo concluído — Obrigado e aproveite o passeio!',
+    html: `
+      <h2>1. RECONHECIMENTO DOS RISCOS INERENTES</h2>
+      <p>Compreendo e aceito que minha participação em atividades de ciclismo, ciclismo com bicicletas elétricas, uso de patinetes elétricos e quaisquer outras atividades relacionadas a equipamentos alugados da Spokes Bicycle Rentals &amp; Espresso Bar Inc. (“Spokes”) é voluntária e envolve riscos inerentes, incluindo riscos de lesões corporais, morte e danos materiais. Aceito livremente e assumo todos esses riscos e compreendo e concordo que serei o principal responsável pela minha própria segurança ao utilizar os equipamentos alugados da Spokes (“Equipamentos Spokes”).</p>
+      <h2>2. RENÚNCIA E ISENÇÃO DE RESPONSABILIDADE</h2>
+      <p>Em meu próprio nome e em nome de meu espólio, herdeiros, representantes, administradores e sucessores, renuncio a quaisquer ações, reivindicações, causas de ação e responsabilidades e libero, isento e desobrigo permanentemente a Spokes e todos os seus representantes, funcionários e empresas afiliadas (coletivamente, as “Partes Isentas”) de quaisquer ações, reivindicações, causas de ação e responsabilidades decorrentes ou de qualquer forma relacionadas, direta ou indiretamente, ao meu uso ou operação dos Equipamentos Spokes, incluindo, entre outros, negligência, violação contratual, descumprimento do dever de cuidado ou violação de qualquer obrigação legal ou outra obrigação por qualquer Parte Isenta.</p>
+      <h2>3. INDENIZAÇÃO</h2>
+      <p>Concordo em indenizar, defender e manter as Partes Isentas livres de quaisquer ações, reivindicações, causas de ação, responsabilidades, despesas e custos, incluindo custos jurídicos razoáveis, decorrentes ou de qualquer forma relacionados, direta ou indiretamente, ao meu uso ou operação dos Equipamentos Spokes e/ou ao uso ou operação dos Equipamentos Spokes por um menor sob meus cuidados.</p>
+      <p>Concordo também em indenizar integralmente a Spokes pelo valor justo de mercado de todos os Equipamentos Spokes perdidos ou destruídos enquanto alugados por mim ou sob minha guarda ou controle. Concordo ainda em indenizar integralmente a Spokes pelos custos de reparação de quaisquer danos aos Equipamentos Spokes ocorridos enquanto alugados por mim ou sob minha guarda ou controle. Quando houver valores devidos, autorizo a Spokes a cobrar o valor integral dessa indenização no cartão de crédito que mantenho cadastrado junto à Spokes.</p>
+      <h2>4. DECLARAÇÕES</h2>
+      <p>(a) Nem eu nem qualquer menor sob meus cuidados faremos algo durante o uso dos Equipamentos Spokes que possa razoavelmente representar um perigo para outras pessoas;<br>
+      (b) Eu e qualquer menor sob meus cuidados cumpriremos rigorosamente todas as leis e regulamentações aplicáveis, incluindo regulamentos municipais e disposições legais, durante o uso ou operação dos Equipamentos Spokes; e<br>
+      (c) Eu e qualquer menor sob meus cuidados possuímos a capacidade, o condicionamento físico e as habilidades razoavelmente necessários para usar e operar os Equipamentos Spokes que aluguei ou obtive, direta ou indiretamente, da Spokes.</p>
+      <p><strong>AO ASSINAR ABAIXO, CONFIRMO QUE LI E COMPREENDI INTEGRALMENTE TODOS OS TERMOS ACIMA</strong></p>
+    `
+  },
+  fa: {
+    title: 'توافق‌نامه سلب مسئولیت',
+    submit: 'ثبت',
+    signature: 'امضای مشتری',
+    signatureHint: 'لطفاً در کادر بالا با انگشت، قلم لمسی یا ماوس امضا کنید.',
+    clearSignature: 'پاک کردن امضا',
+    popup: 'فرم تکمیل شد — سپاسگزاریم، از دوچرخه‌سواری لذت ببرید!',
+    html: `
+      <div dir="rtl" lang="fa">
+      <h2>۱. پذیرش خطرات ذاتی</h2>
+      <p>اینجانب می‌دانم و می‌پذیرم که شرکت من در دوچرخه‌سواری، استفاده از دوچرخه برقی، اسکوتر برقی و هر فعالیت دیگری که با تجهیزات اجاره‌شده از شرکت Spokes Bicycle Rentals &amp; Espresso Bar Inc. («Spokes») مرتبط است، داوطلبانه بوده و خطرات ذاتی از جمله آسیب جسمی، مرگ و خسارت مالی را در بر دارد. من آزادانه تمام این خطرات را می‌پذیرم و مسئولیت آن‌ها را بر عهده می‌گیرم و می‌دانم و موافقم که هنگام استفاده از تجهیزات اجاره‌شده از Spokes («تجهیزات Spokes»)، مسئولیت اصلی ایمنی خودم بر عهده من است.</p>
+      <h2>۲. اسقاط حق و رفع مسئولیت</h2>
+      <p>اینجانب از طرف خود و نیز از طرف ماترک، وراث، نمایندگان، مدیران ترکه و منتقل‌الیهم خود، بدین‌وسیله از تمامی دعاوی، مطالبات، موجبات طرح دعوا و مسئولیت‌های ناشی از استفاده یا به‌کارگیری تجهیزات Spokes یا مرتبط با آن، به‌صورت مستقیم یا غیرمستقیم، صرف‌نظر می‌کنم و Spokes و تمامی نمایندگان، کارکنان و شرکت‌های وابسته به آن (که مجموعاً «اشخاص معاف از مسئولیت» نامیده می‌شوند) را برای همیشه از این موارد مبرا می‌سازم. این موارد شامل، بدون محدود شدن به آن، هرگونه سهل‌انگاری، نقض قرارداد، نقض وظیفه مراقبت یا نقض هر تکلیف قانونی یا تکلیف دیگر از سوی هر یک از اشخاص معاف از مسئولیت است.</p>
+      <h2>۳. جبران خسارت</h2>
+      <p>اینجانب موافقت می‌کنم که اشخاص معاف از مسئولیت را در برابر تمامی دعاوی، مطالبات، موجبات طرح دعوا، مسئولیت‌ها، مخارج و هزینه‌ها، از جمله هزینه‌های حقوقی متعارف، که به‌طور مستقیم یا غیرمستقیم از استفاده یا به‌کارگیری تجهیزات Spokes توسط من و/یا استفاده یا به‌کارگیری این تجهیزات توسط فرد زیر سن قانونی تحت مراقبت من ناشی می‌شود یا با آن ارتباط دارد، جبران خسارت کرده، از آنان دفاع کنم و آنان را از هرگونه زیان مصون نگه دارم.</p>
+      <p>همچنین موافقت می‌کنم ارزش منصفانه بازار تمامی تجهیزات Spokes را که در مدت اجاره توسط من یا زمانی که به هر نحو تحت مراقبت یا کنترل من هستند مفقود یا نابود شوند، به‌طور کامل به Spokes بپردازم. افزون بر این، موافقت می‌کنم تمامی هزینه‌های تعمیر هرگونه آسیب واردشده به تجهیزات Spokes را که در مدت اجاره توسط من یا زمانی که تحت مراقبت یا کنترل من هستند رخ داده باشد، به‌طور کامل جبران کنم. در صورت ایجاد بدهی قابل پرداخت، اجازه می‌دهم Spokes کل مبلغ این جبران خسارت را از کارت اعتباری ثبت‌شده من نزد Spokes برداشت کند.</p>
+      <h2>۴. اظهارات و تعهدات</h2>
+      <p>(الف) نه من و نه هیچ فرد زیر سن قانونی تحت مراقبت من، هنگام استفاده از تجهیزات Spokes کاری انجام نخواهیم داد که به‌طور معقول بتواند برای دیگران خطر ایجاد کند؛<br>
+      (ب) من و هر فرد زیر سن قانونی تحت مراقبت من، هنگام استفاده یا به‌کارگیری تجهیزات Spokes، تمامی قوانین و مقررات لازم‌الاجرا، از جمله آیین‌نامه‌های محلی و مقررات قانونی را به‌طور کامل رعایت خواهیم کرد؛ و<br>
+      (پ) من و هر فرد زیر سن قانونی تحت مراقبت من، توانایی، آمادگی جسمانی و مهارت لازم و متعارف برای استفاده و به‌کارگیری تجهیزات Spokes را که به‌طور مستقیم یا غیرمستقیم از Spokes اجاره کرده یا دریافت کرده‌ام، داریم.</p>
+      <p><strong>با امضای زیر تأیید می‌کنم که تمامی شرایط فوق را خوانده و به‌طور کامل درک کرده‌ام.</strong></p>
+      </div>
     `
   },
   zh: {
     title: '免责声明协议',
     submit: '提交',
+    signature: '客户签名',
+    signatureHint: '请使用手指、触控笔或鼠标在上方签名。',
+    clearSignature: '清除签名',
     popup: '签署完成 — 谢谢，祝您骑行愉快！',
     html: `
       <h2>1. 对固有风险的确认</h2>
@@ -252,12 +353,59 @@ const i18n = {
       (c) 我及我照看的未成年人具备合理要求的能力、体能和技能，以使用和操作我从 Spokes 处直接或间接租用或取得的
       Spokes 设备。</p>
 
-      <p><strong>点击“提交”即表示我已阅读并完全理解上述所有条款</strong></p>
+      <p><strong>在下方签名即表示我已阅读并完全理解上述所有条款</strong></p>
+    `
+  },
+  es: {
+    title: 'Acuerdo de exención de responsabilidad',
+    submit: 'ENVIAR',
+    signature: 'Firma del cliente',
+    signatureHint: 'Firme arriba con el dedo, un lápiz óptico o el ratón.',
+    clearSignature: 'Borrar firma',
+    popup: 'Exención completada — ¡Gracias y disfrute del paseo!',
+    html: `
+      <h2>1. RECONOCIMIENTO DE LOS RIESGOS INHERENTES</h2>
+      <p>Entiendo y acepto que mi participación en actividades de ciclismo, bicicletas eléctricas, patinetes eléctricos y cualquier otra actividad relacionada con equipos alquilados a Spokes Bicycle Rentals &amp; Espresso Bar Inc. («Spokes») es voluntaria e implica riesgos inherentes, incluidos riesgos de lesiones corporales, muerte y daños materiales. Acepto libremente y asumo todos esos riesgos, y entiendo y acepto que seré principalmente responsable de mi propia seguridad mientras utilice los equipos alquilados a Spokes («Equipos Spokes»).</p>
+      <h2>2. RENUNCIA Y EXONERACIÓN</h2>
+      <p>Por mí mismo y en nombre de mi patrimonio, herederos, agentes, administradores y cesionarios, renuncio, libero y exonero para siempre a Spokes y a todos sus agentes, empleados y empresas afiliadas (colectivamente, las «Partes Exoneradas») de toda acción, reclamación, causa de acción y responsabilidad que surja de o esté relacionada, directa o indirectamente, con mi uso u operación de los Equipos Spokes, incluida, entre otras, cualquier negligencia, incumplimiento de contrato, incumplimiento del deber de cuidado o incumplimiento de cualquier otra obligación legal por parte de una Parte Exonerada.</p>
+      <h2>3. INDEMNIZACIÓN</h2>
+      <p>Me comprometo a indemnizar, defender y mantener indemnes a las Partes Exoneradas frente a todas las acciones, reclamaciones, causas de acción, responsabilidades, gastos y costos, incluidos los honorarios legales razonables, que surjan de o estén relacionados, directa o indirectamente, con mi uso u operación de los Equipos Spokes y/o el uso u operación de los Equipos Spokes por parte de un menor bajo mi cuidado.</p>
+      <p>También acepto indemnizar íntegramente a Spokes por el valor justo de mercado de todos los Equipos Spokes que se pierdan o destruyan mientras estén alquilados por mí o mientras estén bajo mi custodia o control. Asimismo, acepto indemnizar íntegramente a Spokes por los costos de reparación de cualquier daño a los Equipos Spokes que se produzca mientras estén alquilados por mí o bajo mi custodia o control. Cuando corresponda, autorizo a Spokes a cargar el importe total de esta indemnización a la tarjeta de crédito que tengo registrada.</p>
+      <h2>4. DECLARACIONES</h2>
+      <p>(a) Ni yo ni ningún menor bajo mi cuidado haremos nada mientras utilicemos los Equipos Spokes que pueda representar razonablemente un peligro para otras personas;<br>
+      (b) Tanto yo como cualquier menor bajo mi cuidado cumpliremos estrictamente todas las leyes y normas aplicables, incluidos los reglamentos municipales y las disposiciones legales, al utilizar u operar los Equipos Spokes; y<br>
+      (c) Tanto yo como cualquier menor bajo mi cuidado poseemos la capacidad, condición física y habilidad razonablemente necesarias para utilizar y operar los Equipos Spokes que haya alquilado u obtenido, directa o indirectamente, de Spokes.</p>
+      <p><strong>AL FIRMAR A CONTINUACIÓN, CONFIRMO QUE HE LEÍDO Y COMPRENDIDO PLENAMENTE TODOS LOS TÉRMINOS ANTERIORES</strong></p>
+    `
+  },
+  ko: {
+    title: '면책 동의서',
+    submit: '제출',
+    signature: '고객 서명',
+    signatureHint: '위 칸에 손가락, 스타일러스 또는 마우스로 서명해 주세요.',
+    clearSignature: '서명 지우기',
+    popup: '면책 동의가 완료되었습니다 — 감사합니다. 즐거운 라이딩 되세요!',
+    html: `
+      <h2>1. 내재된 위험의 인정</h2>
+      <p>저는 Spokes Bicycle Rentals &amp; Espresso Bar Inc.(이하 “Spokes”)에서 대여한 장비와 관련된 자전거 타기, 전기 자전거 타기, 전동 스쿠터 타기 및 기타 모든 활동에 자발적으로 참여하며, 이러한 활동에는 신체적 상해, 사망 및 재산 피해를 포함한 내재된 위험이 있음을 이해하고 동의합니다. 저는 이러한 모든 위험을 자발적으로 수락하고 부담하며, Spokes에서 대여한 장비(이하 “Spokes 장비”)를 사용하는 동안 제 안전에 대한 주된 책임이 저에게 있음을 이해하고 동의합니다.</p>
+      <h2>2. 권리 포기 및 면책</h2>
+      <p>저는 본인과 저의 유산, 상속인, 대리인, 관리인 및 양수인을 대신하여, Spokes와 그 모든 대리인, 직원 및 계열사(통칭하여 “면책 대상자”)를 Spokes 장비의 사용 또는 작동으로 인해 발생하거나 직간접적으로 관련된 모든 소송, 청구, 소송 원인 및 책임으로부터 영구히 면제하고 면책합니다. 여기에는 면책 대상자의 과실, 계약 위반, 주의 의무 위반 또는 법률상 기타 의무 위반이 포함되며 이에 국한되지 않습니다.</p>
+      <h2>3. 배상</h2>
+      <p>저는 Spokes 장비의 사용 또는 작동 및/또는 제가 보호·관리하는 미성년자의 Spokes 장비 사용 또는 작동으로 인해 발생하거나 직간접적으로 관련된 모든 소송, 청구, 소송 원인, 책임, 비용 및 경비(합리적인 법률 비용 포함)에 대해 면책 대상자를 배상하고, 방어하며, 손해가 없도록 할 것에 동의합니다.</p>
+      <p>또한 제가 대여한 기간 또는 그 밖에 제가 보관하거나 통제하는 동안 분실되거나 파손된 모든 Spokes 장비의 공정 시장 가액을 Spokes에 전액 배상하는 데 동의합니다. 제가 대여한 기간 또는 그 밖에 제가 보관하거나 통제하는 동안 발생한 Spokes 장비의 손상에 대한 수리 비용도 Spokes에 전액 배상하는 데 동의합니다. 지급 의무가 발생하는 경우 Spokes가 등록된 제 신용카드에 해당 배상액 전액을 청구하는 데 동의합니다.</p>
+      <h2>4. 진술 및 보증</h2>
+      <p>(a) 저 또는 제가 보호·관리하는 미성년자는 Spokes 장비를 사용하는 동안 다른 사람에게 합리적으로 위험을 초래할 수 있는 행동을 하지 않습니다;<br>
+      (b) 저와 제가 보호·관리하는 모든 미성년자는 Spokes 장비를 사용하거나 작동할 때 조례 및 법령을 포함한 모든 관련 법률과 규정을 엄격히 준수합니다; 그리고<br>
+      (c) 저와 제가 보호·관리하는 모든 미성년자는 Spokes에서 직접 또는 간접적으로 대여하거나 취득한 Spokes 장비를 사용하고 작동하는 데 합리적으로 필요한 능력, 체력 및 기술을 갖추고 있습니다.</p>
+      <p><strong>아래에 서명함으로써, 위의 모든 조건을 읽고 완전히 이해했음을 확인합니다.</strong></p>
     `
   },
   ja: {
     title: '免責同意書',
     submit: '送信',
+    signature: 'お客様の署名',
+    signatureHint: '指、スタイラス、またはマウスで上に署名してください。',
+    clearSignature: '署名を消去',
     popup: '免責同意が完了しました — ありがとうございます。良いライドを！',
     html: `
       <h2>1. 固有の危険の承認</h2>
@@ -289,7 +437,7 @@ const i18n = {
       (c) 私および私の保護下にある未成年者は、Spokes から直接または間接にレンタルまたは取得した Spokes 機材を使用・操作する
       のに合理的に必要な能力、体力および技能を有しています。</p>
 
-      <p><strong>「送信」をクリックすることで、上記のすべての条件を読み、完全に理解したことを確認します</strong></p>
+      <p><strong>下記に署名することで、上記のすべての条件を読み、完全に理解したことを確認します</strong></p>
     `
   }
 };
@@ -298,9 +446,14 @@ let currentLang = 'en';
 const htmlTag = document.documentElement;
 const titleEl = document.getElementById('page-title');
 const contentEl = document.getElementById('waiver-content');
+const signatureCanvas = document.getElementById('signature-pad');
+const signatureContext = signatureCanvas.getContext('2d');
 const submitBtn = document.getElementById('accept-btn');
 const overlay = document.getElementById('popup-overlay');
 const popup = document.getElementById('popup');
+const clearSignatureButton = document.getElementById('clear-signature');
+let isSigning = false;
+let hasSignature = false;
 const langStatus = document.getElementById('lang-status');
 
 function applyLanguage(lang) {
@@ -312,6 +465,9 @@ function applyLanguage(lang) {
   contentEl.innerHTML = t.html;
   submitBtn.textContent = t.submit;
   popup.textContent = t.popup;
+  document.getElementById('signature-label').textContent = t.signature;
+  document.getElementById('clear-signature').textContent = t.clearSignature;
+  clearSignature();
   langStatus.textContent = '';
 }
 
@@ -324,15 +480,81 @@ document.querySelectorAll('.lang-btn').forEach(b => {
   });
 });
 
+function resizeSignaturePad() {
+  const rect = signatureCanvas.getBoundingClientRect();
+  const pixelRatio = Math.max(window.devicePixelRatio || 1, 1);
+  const savedSignature = hasSignature ? signatureCanvas.toDataURL() : null;
+
+  signatureCanvas.width = Math.round(rect.width * pixelRatio);
+  signatureCanvas.height = Math.round(rect.height * pixelRatio);
+  signatureContext.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+  signatureContext.lineWidth = 2.5;
+  signatureContext.lineCap = 'round';
+  signatureContext.lineJoin = 'round';
+  signatureContext.strokeStyle = '#111';
+
+  if (savedSignature) {
+    const image = new Image();
+    image.onload = () => signatureContext.drawImage(image, 0, 0, rect.width, rect.height);
+    image.src = savedSignature;
+  }
+}
+
+function getSignaturePosition(event) {
+  const rect = signatureCanvas.getBoundingClientRect();
+  return { x: event.clientX - rect.left, y: event.clientY - rect.top };
+}
+
+signatureCanvas.addEventListener('pointerdown', event => {
+  event.preventDefault();
+  isSigning = true;
+  signatureCanvas.setPointerCapture(event.pointerId);
+  const point = getSignaturePosition(event);
+  signatureContext.beginPath();
+  signatureContext.moveTo(point.x, point.y);
+});
+
+signatureCanvas.addEventListener('pointermove', event => {
+  if (!isSigning) return;
+  event.preventDefault();
+  const point = getSignaturePosition(event);
+  signatureContext.lineTo(point.x, point.y);
+  signatureContext.stroke();
+  hasSignature = true;
+  submitBtn.disabled = false;
+});
+
+function stopSigning() {
+  if (!isSigning) return;
+  isSigning = false;
+  signatureContext.closePath();
+}
+
+signatureCanvas.addEventListener('pointerup', stopSigning);
+signatureCanvas.addEventListener('pointercancel', stopSigning);
+signatureCanvas.addEventListener('lostpointercapture', stopSigning);
+
 submitBtn.addEventListener('click', () => {
+  if (!hasSignature) return;
   overlay.style.display = 'block';
   popup.style.display = 'block';
   setTimeout(() => {
     popup.style.display = 'none';
     overlay.style.display = 'none';
-    if (currentLang !== 'en') applyLanguage('en');
-  }, 3000); // 3 seconds
+    applyLanguage('en');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, 2500);
 });
+
+function clearSignature() {
+  signatureContext.clearRect(0, 0, signatureCanvas.width, signatureCanvas.height);
+  hasSignature = false;
+  submitBtn.disabled = true;
+}
+
+clearSignatureButton.addEventListener('click', clearSignature);
+window.addEventListener('resize', resizeSignaturePad);
+resizeSignaturePad();
 </script>
 
 </body>
